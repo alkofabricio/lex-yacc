@@ -4,14 +4,16 @@
 Este é um analisador sintático utilizando LEX e YACC para o reconhecimento de comandos para SQL através do terminal do sistema operacional.
 
 ## Configuração inicial
-+ Para executar o compilador você deve estar em uma máquina UNIX, pode ser Mac ou Linux.-
-+ No Linux, para instalar os pacotes necessários, deve executar os seguintes comandos no terminal:-
++ Para executar o compilador você deve estar em uma máquina UNIX, pode ser Mac ou Linux;
++ No Linux, para instalar os pacotes necessários, deve executar os seguintes comandos no terminal:
 ```
 	sudo apt-get install flex
 	sudo apt-get install byaac
 ```
-+ Após a instalação dos pacotes, você deve ir pelo terminal até a pasta onde está os arquivos lex.l e yacc.y.-
-+ Lá deve ser executado os seguintes comandos:-
++ Após a instalação dos pacotes, 
++ Baixe os arquivos <b>lex.l</b> e <b>yacc.y</b>;
++ Com o terminal, você deve ir até a pasta onde está os arquivos baixados;
++ Lá deve ser executado os seguintes comandos:
 ```
 	lex lex.l
 	yacc -d yacc.y
@@ -43,7 +45,7 @@ Este é um analisador sintático utilizando LEX e YACC para o reconhecimento de 
 ```
 	Sintaxe Correta
 ```
-+ Tente agora digitar uma sentença incorreta, como por exemplo:
++ Tente agora digitar alguma sentença incorreta, como por exemplo:
 ```
 	select * from where name=uepb
 	select name from table
