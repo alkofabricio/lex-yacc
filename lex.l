@@ -4,6 +4,7 @@
     extern int yylval;
 %}
 
+// Este e o mapeamento dos comandos que serao analisados
 %%
 select					return SELECT;
 from					return FROM;
