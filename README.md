@@ -49,3 +49,7 @@ Este é um compilador Lex-Yacc feito em C
 	select name from table
 ```
 + Dessa forma, ele irá retornar a mensagem de erro e o analisador encerrará.
+
+## Observações
++ Para executar o Lex-Yacc no Windows, instale os pacotes necessários através deste tutorial https://www.youtube.com/watch?v=0MUULWzswQE&t=11s
++ O comando surname suporta apenas 8 caracteres.
