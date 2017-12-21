@@ -19,13 +19,20 @@
 
 line: selecionar itens usando condicao '\n'{
     printf("Sintaxe Correcta\n");
+    return 0;
 };
 
 selecionar: SELECT;
+
 itens: '*' | identificadores;
+
 identificadores: IDENTIFIER | IDENTIFIER ',' identificadores;
-usando: FROM IDENTIFIER WHERE;
-condicao: IDENTIFIER '=' IDENTIFIER | IDENTIFIER '=' IDENTIFIER AND condicao | IDENTIFIER '=' IDENTIFIER OR condicao;
+
+usando:         FROM IDENTIFIER WHERE;
+
+condicao:       identificadores '=' identificadores | 
+                identificadores '=' identificadores AND condicao | 
+                identificadores '=' identificadores OR condicao;
 
 %%
 
