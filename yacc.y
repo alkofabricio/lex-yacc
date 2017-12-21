@@ -10,13 +10,16 @@
 
     void yyerror(const char *erro){
         fprintf(stderr, "Ocorreu um erro: %s\n", erro);
-}
+    }
   
 %}
 
+//Neste bloco, sera feita a construcao logica da analise dos comandos que foram mapeados.
 %%
 %token SELECT FROM IDENTIFIER WHERE OR AND;
 
+//Ele verifica a linha que foi enviada e cada palavra que compoe esta linha estao definidas abaixo
+//Quando ele detecta a sintaxe como correta, o programa encerra.
 line: selecionar itens usando condicao '\n'{
     printf("Sintaxe Correcta\n");
     return 0;
