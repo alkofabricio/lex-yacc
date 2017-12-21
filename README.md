@@ -37,7 +37,7 @@ Este é um compilador Lex-Yacc feito em C
 + Tente, por exemplo digitar estas linhas de comando:
 ```
 	select * from table1 where name=uepb
-	select name from table2 where name=uepb and survname=compilad
+	select name from table2 where name=uepb and surname=compilad
 ```
 + Dessa forma, se tudo ocorrer bem, ele irá retornar:
 ```
