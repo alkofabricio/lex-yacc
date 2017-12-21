@@ -25,6 +25,29 @@ line: selecionar itens usando condicao '\n'{
     return 0;
 };
 
+/* Gramatica da logica usada
+Sendo os terminais
+    line = L (Inicial)
+    selecionar = S
+    itens = I
+    identificadores = D
+    usando = U
+    condicao = C
+    
+Os nao terminais:
+    SELECT = s
+    IDENTIFIER = id
+    AND = a
+    OR = o
+
+Podemos escrever a logica de analise assim:
+        L -> SIUC
+        S -> s
+        I -> * | D
+        D -> id | id,D
+        C -> D=D | D=DaC | D=DoC
+*/
+
 selecionar: SELECT;
 
 itens: '*' | identificadores;
