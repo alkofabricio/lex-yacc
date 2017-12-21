@@ -1,7 +1,7 @@
 
 # Utilizando LEX e YACC para reconhecer comandos SQL
 
-Este é um compilador Lex-Yacc feito em C
+Este é um analisador sintático utilizando LEX e YACC para o reconhecimento de comandos para SQL através do terminal do sistema operacional.
 
 ## Configuração inicial
 + Para executar o compilador você deve estar em uma máquina UNIX, pode ser Mac ou Linux.-
@@ -51,5 +51,5 @@ Este é um compilador Lex-Yacc feito em C
 + Dessa forma, ele irá retornar a mensagem de erro e o analisador encerrará.
 
 ## Observações
-+ Para executar o Lex-Yacc no Windows, instale os pacotes necessários através deste tutorial https://www.youtube.com/watch?v=0MUULWzswQE&t=11s
-+ O comando surname suporta apenas 8 caracteres.
++ Para executar o Lex-Yacc no Windows, instale os pacotes necessários através deste tutorial
+https://www.youtube.com/watch?v=0MUULWzswQE&t=11s
