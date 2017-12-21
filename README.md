@@ -5,11 +5,12 @@ Este é um analisador sintático utilizando LEX e YACC para o reconhecimento de 
 
 ## Configuração inicial
 + Para executar o compilador você deve estar em uma máquina UNIX, pode ser Mac ou Linux;
-+ No Linux, para instalar os pacotes necessários, deve executar os seguintes comandos no terminal:
++ No <b>Linux</b>, para instalar os pacotes necessários, deve executar os seguintes comandos no terminal:
 ```
 	sudo apt-get install flex
 	sudo apt-get install byaac
 ```
++ No <b>Windows</b>, siga as instruções do tutorial no final destas anotações.
 + Após a instalação dos pacotes, 
 + Baixe os arquivos <b>lex.l</b> e <b>yacc.y</b>;
 + Com o terminal, você deve ir até a pasta onde está os arquivos baixados;
