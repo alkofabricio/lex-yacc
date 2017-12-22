@@ -33,6 +33,8 @@ Este é um analisador sintático utilizando <b>python2.7</p>.
 ```
 + Dessa forma, ele irá retornar a mensagem de erro e o analisador encerrará.
 
+![title}(https://github.com/alkofabricio/lex-yacc/blob/master/Captura%20de%20Tela%202017-12-22%20a%CC%80s%2001.40.46.png)
+
 ## Observações
 + Para instalar a biblioteca necessária no Windows, instale os pacotes necessários através deste tutorial
 https://mail.python.org/pipermail/python-list/2011-March/600251.html
