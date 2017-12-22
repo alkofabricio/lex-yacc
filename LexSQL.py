@@ -51,6 +51,11 @@ while True:
     resultado.append(ltoken.type)
     cont += 1
 
+"""
+    Através dos condicionais abaixo, ele irá fazer a análise de precedência dos comandos e verificar se estão sendo colocados 
+    também na ordem correta.
+"""
+    
 if len(resultado) == 8:
     if (resultado[0] == 'SELECT' and
             (resultado[1] == 'ID' or resultado[1] == 'ASTERISCO')
@@ -61,9 +66,9 @@ if len(resultado) == 8:
             and resultado[6] == 'EQ'
             and resultado[7] == 'ID'):
 
-        print ("Sintaxe correta")
+        print ("Sintaxe Correta")
     else:
-        print("Error de sintaxe!")
+        print("Error de Sintaxe!")
 
 
 elif len(resultado) == 12:
@@ -80,11 +85,11 @@ elif len(resultado) == 12:
             and resultado[10] == 'EQ'
             and resultado[11] == 'ID'):
 
-        print ("Sintaxe correta\n")
+        print ("Sintaxe Correta\n")
     else:
-        print("Error de sintaxe!")
+        print("Error de Sintaxe!")
 
 else:
-    print("Error de sintaxe!")
+    print("Error de Sintaxe!")
 
 
