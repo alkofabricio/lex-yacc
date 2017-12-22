@@ -1,6 +1,6 @@
 import ply.lex as lex
 
-tokens = ['ID', 'ASTERISCO', 'EQ', 'nEQ', 'VIRG']
+tokens = ['ID', 'ASTERISCO', 'EQ']
 
 reserved = {
     'select': 'SELECT',
@@ -19,7 +19,6 @@ def t_ID(t):
 
 
 t_ASTERISCO = r'\*'
-t_VIRG = r'\,'
 t_EQ = r'\='
 
 t_ignore = " \t"
