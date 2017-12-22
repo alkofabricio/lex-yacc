@@ -9,7 +9,7 @@ reserved = { # Estas sao as palavras reservadas
     'or': 'OR',
 }
 
-tokens = ['ID', 'ASTERISCO', 'EQ'] + list(reserved.values())
+tokens = ['ID', 'ASTERISCO', 'EQ', 'ASPAS'] + list(reserved.values())
 
 
 # Este metodo faz o tratamento nao reconhecer as palavras reservadas como ID
@@ -29,7 +29,7 @@ t_ignore = ' \t'
 
 t_ASTERISCO = r'\*'
 t_EQ = r'\='
-
+t_ASPAS = r'\''
 
 def t_error(t):
     raise TypeError("Texto desconhecido %s" % (t.type))
@@ -106,7 +106,7 @@ def p_condition(t):
 
 def p_expressao(t):
     '''
-    expressao : atom EQ atom
+    expressao : atom EQ ASPAS atom ASPAS
     '''
     t[0] = (t[1], t[2], t[3])
 
