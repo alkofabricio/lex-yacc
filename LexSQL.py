@@ -1,7 +1,6 @@
-import ply.lex as lex
+# Configuracao dos Tokens
 
 tokens = ['ID', 'ASTERISCO', 'EQ']
-
 reserved = {
     'select': 'SELECT',
     'from': 'FROM',
@@ -12,83 +11,98 @@ reserved = {
 
 tokens += list(reserved.values())
 
+
 def t_ID(t):
     r'[a-zA-Z][a-zA-Z0-9]*'
     t.type = reserved.get(t.value, 'ID')
     return t
 
 
-t_ASTERISCO = r'\*'
-t_EQ = r'\='
-
-t_ignore = " \t"
-
 
 def t_newline(t):
     r'\n+'
-    t.lexer.lineno += t.value.count("\n")
+    t.lexer.lineno += len(t.value)
+
+
+t_ignore = ' \t'
+
+t_ASTERISCO = r'\*'
+t_EQ = r'\='
+
 
 def t_error(t):
-    print('Caractere invalido = %s' % t.value[0])
-    t.lexer.skip(1)
+    raise TypeError("Texto desconhecido %s" % (t.type))
 
+# Instanciando o lexer
+import ply.lex as lex
 lexer = lex.lex()
 
-data = raw_input("Digite a sentenca: ")
 
-lexer.input(data.lower())
+# Regras
+precedence = (
+    ('left', 'OR'),
+    ('left', 'AND'),
+    ('left', 'EQ'),
+)
 
-resultado = []
-cont = 0
+
+
+
+def p_inicial(t):
+    # select * from tabela where name=name and name=name
+    '''
+    inicial : SELECT column FROM atom WHERE condition
+    '''
+    t[0] = ('select', t[2], 'from', t[4], 'where', t[6])
+    print("Sintaxe Correta")
+
+
+def p_column(t):
+    '''
+     column : atom
+            | ASTERISCO
+    '''
+    t[0] = t[1]
+
+
+def p_condition(t):
+    '''
+    condition : condition AND condition
+              | condition OR condition
+              | expressao
+
+    '''
+    if len(t) == 4:
+        t[0] = t[1], t[2], t[3]
+    elif len(t) == 2:
+        t[0] = t[1]
+
+def p_expressao(t):
+    '''
+    expressao : atom EQ atom
+    '''
+    t[0] = (t[1], t[2], t[3])
+
+
+def p_atom(t):
+    '''
+    atom : ID
+    '''
+    t[0] = t[1]
+
+def p_error(t):
+    if t:
+        print ("Erro sintatico em ",  t.value)
+    else:
+        print "Erro sintatico no EOF"
+
+# Configurando o YACC
+import ply.yacc as yacc
+parser = yacc.yacc()
 
 while True:
-    ltoken = lexer.token()
-    if not ltoken:
-        cont = 0
+    try:
+        s = raw_input("Digite a sentenca: ")
+    except EOFError:
         break
-    #print(ltoken.value, ltoken.type) # Print para proposito de teste
-    resultado.append(ltoken.type)
-    cont += 1
-
-"""
-    Através dos condicionais abaixo, ele irá fazer a análise de precedência dos comandos e verificar se estão sendo colocados 
-    também na ordem correta.
-"""
-    
-if len(resultado) == 8:
-    if (resultado[0] == 'SELECT' and
-            (resultado[1] == 'ID' or resultado[1] == 'ASTERISCO')
-            and resultado[2] == 'FROM'
-            and resultado[3] == 'ID'
-            and resultado[4] == 'WHERE'
-            and resultado[5] == 'ID'
-            and resultado[6] == 'EQ'
-            and resultado[7] == 'ID'):
-
-        print ("Sintaxe Correta")
-    else:
-        print("Error de Sintaxe!")
-
-
-elif len(resultado) == 12:
-    if (resultado[0] == 'SELECT' and
-            (resultado[1] == 'ID' or resultado[1] == 'ASTERISCO')
-            and resultado[2] == 'FROM'
-            and resultado[3] == 'ID'
-            and resultado[4] == 'WHERE'
-            and resultado[5] == 'ID'
-            and resultado[6] == 'EQ'
-            and resultado[7] == 'ID'
-            and (resultado[8] == 'AND' or resultado[8] == 'OR')
-            and resultado[9] == 'ID'
-            and resultado[10] == 'EQ'
-            and resultado[11] == 'ID'):
-
-        print ("Sintaxe Correta\n")
-    else:
-        print("Error de Sintaxe!")
-
-else:
-    print("Error de Sintaxe!")
-
-
+    parser.parse(s)
