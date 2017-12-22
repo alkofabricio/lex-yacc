@@ -24,6 +24,8 @@ Este é um analisador sintático utilizando <b>python2.7</p>.
 ```
 	Sintaxe Correta
 ```
+
+![title](https://github.com/alkofabricio/lex-yacc/blob/master/Captura%20de%20Tela%202017-12-22%20a%CC%80s%2001.40.03.png)
 + Tente agora digitar alguma sentença incorreta, como por exemplo:
 ```
 	select * from where name=uepb
