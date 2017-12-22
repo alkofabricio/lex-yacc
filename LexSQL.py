@@ -130,6 +130,8 @@ parser = yacc.yacc()
 while True:
     try:
         s = raw_input("Digite a sentenca: ")
+        if s == "quit()":
+            break
     except EOFError:
         break
     parser.parse(s)
