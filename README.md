@@ -25,15 +25,17 @@ Este é um analisador sintático utilizando <b>python2.7</p>.
 	Sintaxe Correta
 ```
 
-![title](https://github.com/alkofabricio/lex-yacc/blob/master/Captura%20de%20Tela%202017-12-22%20a%CC%80s%2001.40.03.png)
+![title](https://github.com/alkofabricio/lex-yacc/blob/master/sucesso.png)
 + Tente agora digitar alguma sentença incorreta, como por exemplo:
 ```
 	select * from where name=uepb
 	select name from table
 ```
-+ Dessa forma, ele irá retornar a mensagem de erro e o analisador encerrará.
++ Dessa forma, ele irá retornar a mensagem de erro e o analisador encerrará;
 
-![title](https://github.com/alkofabricio/lex-yacc/blob/master/Captura%20de%20Tela%202017-12-22%20a%CC%80s%2001.40.46.png)
+![title](https://github.com/alkofabricio/lex-yacc/blob/master/falha.png)
+
++ Para encerrar o analisador, digite o comando <b>quit()</b>.
 
 ## Observações
 + Para instalar os pacores necessários no Windows, acesse este tutorial:
