@@ -4,8 +4,7 @@
 Este é um analisador sintático utilizando <b>python2.7</p>.
 
 ## Configuração inicial
-+ Para executar o compilador você deve estar em uma máquina UNIX, pode ser Mac ou Linux;
-+ No <b>Linux</b>, para instalar os pacotes necessários, deve executar os seguintes comandos no terminal:
++ No <b>Mac</b> ou <b>Linux</b>, para instalar os pacotes necessários, deve executar o seguinte comando no terminal:
 ```
 	pip install ply
 ```
