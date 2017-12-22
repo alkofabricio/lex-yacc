@@ -1,7 +1,7 @@
 # Configuracao dos Tokens
 
-tokens = ['ID', 'ASTERISCO', 'EQ']
-reserved = {
+
+reserved = { # Estas sao as palavras reservadas
     'select': 'SELECT',
     'from': 'FROM',
     'where': 'WHERE',
@@ -9,21 +9,22 @@ reserved = {
     'or': 'OR',
 }
 
-tokens += list(reserved.values())
+tokens = ['ID', 'ASTERISCO', 'EQ'] + list(reserved.values())
 
 
+# Este metodo faz o tratamento nao reconhecer as palavras reservadas como ID
 def t_ID(t):
     r'[a-zA-Z][a-zA-Z0-9]*'
     t.type = reserved.get(t.value, 'ID')
     return t
 
 
-
+# Este metodo percorre as regras definidas abaixo
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-
+# Este e o tipo de token que sera ignorado
 t_ignore = ' \t'
 
 t_ASTERISCO = r'\*'
@@ -38,7 +39,7 @@ import ply.lex as lex
 lexer = lex.lex()
 
 
-# Regras
+# Regras de precedendia
 precedence = (
     ('left', 'OR'),
     ('left', 'AND'),
@@ -46,6 +47,32 @@ precedence = (
 )
 
 
+""" A gramatica usada neste analisador
+
+I -> sCfAwD
+C -> A | *
+D -> D and D | D or D | E
+E -> A = A
+A -> id
+
+Nao terminais:
+    inicial     - I
+    column      - C
+    condition   - D
+    expressao   - E
+    atom        - A
+
+Terminais:
+    SELECT      - s
+    FROM        - f
+    WHERE       - w 
+    ASTERISCO   - *
+    ID          - id
+    AND         - and
+    OR          - or
+    EQ          - =
+
+"""
 
 
 def p_inicial(t):
@@ -106,3 +133,5 @@ while True:
     except EOFError:
         break
     parser.parse(s)
+
+
